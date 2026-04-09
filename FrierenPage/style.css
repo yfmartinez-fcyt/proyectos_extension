@@ -1,0 +1,587 @@
+:root {
+    --bg-deep:      #0b0d14;
+    --bg-mid:       #111523;
+    --bg-card:      #161928;
+    --bg-card-hover:#1e2438;
+    --border:       #2a3050;
+    --border-glow:  #4f6aad;
+    --accent:       #7fa7e0;
+    --accent2:      #c9a86c;
+    --accent3:      #a87fc7;
+    --text-main:    #dde4f5;
+    --text-muted:   #7a8aaa;
+    --text-dim:     #4a5570;
+    --gold:         #e8c87a;
+    --gold-dim:     #a8904a;
+    --ep-thumb:     #1a1e30;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+    background: var(--bg-deep);
+    color: var(--text-main);
+    font-family: 'EB Garamond', serif;
+    font-size: 18px;
+    line-height: 1.7;
+}
+
+/* ── HERO ── */
+.hero {
+    position: relative;
+    min-height: 92vh;
+    display: flex;
+    align-items: flex-end;
+    overflow: hidden;
+}
+
+.hero-bg {
+    position: absolute;
+    inset: 0;
+    background:
+    radial-gradient(ellipse 80% 60% at 60% 30%, rgba(79,106,173,0.18) 0%, transparent 70%),
+    radial-gradient(ellipse 50% 40% at 20% 70%, rgba(168,127,199,0.12) 0%, transparent 60%),
+    linear-gradient(175deg, #0d1020 0%, #060810 100%);
+}
+
+.hero-img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center top;
+    opacity: 0.22;
+    mix-blend-mode: luminosity;
+}
+
+.hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, var(--bg-deep) 0%, transparent 55%);
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+    max-width: 900px;
+    padding: 0 60px 70px;
+}
+
+.hero-badge {
+    display: inline-block;
+    font-family: 'Cinzel', serif;
+    font-size: 11px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--accent2);
+    border: 1px solid var(--accent2);
+    padding: 5px 14px;
+    margin-bottom: 22px;
+    opacity: 0.9;
+}
+
+.hero-title {
+    font-family: 'Cinzel', serif;
+    font-size: clamp(2.8rem, 6vw, 5.2rem);
+    font-weight: 800;
+    line-height: 1.05;
+    color: #fff;
+    text-shadow: 0 0 60px rgba(127,167,224,0.35);
+    margin-bottom: 10px;
+}
+
+.hero-subtitle {
+    font-family: 'Cinzel', serif;
+    font-size: clamp(1rem, 2vw, 1.4rem);
+    font-weight: 400;
+    color: var(--accent);
+    letter-spacing: 3px;
+    margin-bottom: 28px;
+}
+
+.hero-meta {
+    display: flex;
+    gap: 28px;
+    flex-wrap: wrap;
+    font-family: 'Crimson Pro', serif;
+    font-size: 15px;
+    color: var(--text-muted);
+    letter-spacing: 1px;
+}
+
+.hero-meta span { display: flex; align-items: center; gap: 7px; }
+.hero-meta svg { width: 14px; height: 14px; opacity: .7; }
+
+/* ── NAV ── */
+nav {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(11,13,20,0.93);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    gap: 0;
+    padding: 0 60px;
+}
+
+nav a {
+    font-family: 'Cinzel', serif;
+    font-size: 12px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    text-decoration: none;
+    padding: 18px 20px;
+    border-bottom: 2px solid transparent;
+    transition: color .25s, border-color .25s;
+}
+
+nav a:hover {
+    color: var(--accent);
+    border-color: var(--accent);
+}
+
+/* ── LAYOUT ── */
+.page-wrap {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 40px;
+}
+
+section {
+    padding: 80px 0;
+    border-bottom: 1px solid var(--border);
+}
+
+section:last-child { border-bottom: none; }
+
+.section-label {
+    font-family: 'Cinzel', serif;
+    font-size: 11px;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+    color: var(--accent2);
+    margin-bottom: 14px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+.section-label::after {
+    content: '';
+    flex: 1;
+    max-width: 60px;
+    height: 1px;
+    background: var(--accent2);
+    opacity: .5;
+}
+
+.section-title {
+    font-family: 'Cinzel', serif;
+    font-size: clamp(1.6rem, 3vw, 2.6rem);
+    font-weight: 600;
+    color: #fff;
+    margin-bottom: 36px;
+    line-height: 1.2;
+}
+
+/* ── SINOPSIS ── */
+.synopsis-grid {
+    display: grid;
+    grid-template-columns: 1fr 340px;
+    gap: 50px;
+    align-items: start;
+}
+
+.synopsis-text p {
+    font-family: 'Crimson Pro', serif;
+    font-size: 19px;
+    color: var(--text-main);
+    margin-bottom: 20px;
+    line-height: 1.8;
+}
+
+.synopsis-poster {
+    border: 1px solid var(--border);
+    overflow: hidden;
+    position: relative;
+}
+
+.synopsis-poster img {
+    width: 100%;
+    aspect-ratio: 2/3;
+    object-fit: cover;
+    display: block;
+    background: var(--ep-thumb);
+}
+
+.synopsis-poster::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border: 1px solid rgba(79,106,173,0.3);
+    pointer-events: none;
+}
+
+.info-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 30px;
+    font-family: 'Crimson Pro', serif;
+    font-size: 16px;
+}
+
+.info-table tr { border-bottom: 1px solid var(--border); }
+.info-table td { padding: 10px 6px; }
+.info-table td:first-child {
+    color: var(--text-muted);
+    font-style: italic;
+    width: 130px;
+    min-width: 130px;
+}
+.info-table td:last-child { color: var(--text-main); }
+
+/* ── PREMIOS ── */
+.awards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
+    gap: 20px;
+}
+
+.award-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    padding: 28px;
+    position: relative;
+    transition: border-color .25s, background .25s;
+}
+
+.award-card:hover {
+    border-color: var(--border-glow);
+    background: var(--bg-card-hover);
+}
+
+.award-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 3px;
+    height: 100%;
+    background: linear-gradient(to bottom, var(--gold), transparent);
+}
+
+.award-icon {
+    font-size: 28px;
+    margin-bottom: 14px;
+    display: block;
+}
+
+.award-title {
+    font-family: 'Cinzel', serif;
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--gold);
+    margin-bottom: 6px;
+}
+
+.award-org {
+    font-family: 'Crimson Pro', serif;
+    font-size: 14px;
+    color: var(--text-muted);
+    font-style: italic;
+    margin-bottom: 10px;
+}
+
+.award-desc {
+    font-family: 'Crimson Pro', serif;
+    font-size: 15px;
+    color: var(--text-main);
+    line-height: 1.55;
+}
+
+.award-result {
+    display: inline-block;
+    margin-top: 10px;
+    font-family: 'Cinzel', serif;
+    font-size: 10px;
+    letter-spacing: 2px;
+    padding: 4px 10px;
+    border-radius: 0;
+}
+
+.award-result.won {
+    background: rgba(232,200,122,0.15);
+    border: 1px solid var(--gold-dim);
+    color: var(--gold);
+}
+
+.award-result.nom {
+    background: rgba(127,167,224,0.1);
+    border: 1px solid var(--border-glow);
+    color: var(--accent);
+}
+
+.awards-summary {
+    font-family: 'Crimson Pro', serif;
+    font-size: 19px;
+    color: var(--text-main);
+    margin-bottom: 36px;
+    padding: 24px 30px;
+    background: var(--bg-card);
+    border-left: 3px solid var(--gold);
+}
+
+.awards-summary strong { color: var(--gold); }
+
+/* ── PERSONAJES ── */
+.chars-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 24px;
+}
+
+.char-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    overflow: hidden;
+    transition: transform .25s, border-color .25s, box-shadow .25s;
+    cursor: default;
+}
+
+.char-card:hover {
+    transform: translateY(-4px);
+    border-color: var(--border-glow);
+    box-shadow: 0 12px 40px rgba(79,106,173,0.2);
+}
+
+.char-img {
+    width: 100%;
+    aspect-ratio: 3/4;
+    object-fit: cover;
+    object-position: top;
+    display: block;
+    background: var(--ep-thumb);
+}
+
+.char-info {
+    padding: 18px 18px 20px;
+}
+
+.char-name {
+    font-family: 'Cinzel', serif;
+    font-size: 16px;
+    font-weight: 600;
+    color: #fff;
+    margin-bottom: 4px;
+}
+
+.char-role {
+    font-family: 'Crimson Pro', serif;
+    font-size: 14px;
+    color: var(--accent);
+    font-style: italic;
+    margin-bottom: 10px;
+}
+
+.char-va {
+    font-family: 'Crimson Pro', serif;
+    font-size: 13px;
+    color: var(--text-muted);
+}
+
+.char-desc {
+    font-family: 'Crimson Pro', serif;
+    font-size: 14.5px;
+    color: var(--text-main);
+    line-height: 1.55;
+    margin-top: 10px;
+}
+
+/* ── EPISODIOS ── */
+.cour-label {
+    font-family: 'Cinzel', serif;
+    font-size: 13px;
+    letter-spacing: 3px;
+    color: var(--accent2);
+    margin-bottom: 20px;
+    margin-top: 44px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--border);
+}
+
+.cour-label:first-of-type { margin-top: 0; }
+
+.ep-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 16px;
+    margin-bottom: 10px;
+}
+
+.ep-card {
+    display: flex;
+    flex-direction: column;
+    background: var(--ep-thumb);
+    border: 1px solid var(--border);
+    text-decoration: none;
+    color: inherit;
+    transition: border-color .22s, background .22s, box-shadow .22s, transform .22s;
+    overflow: hidden;
+}
+
+.ep-card:hover {
+    border-color: var(--accent);
+    background: var(--bg-card-hover);
+    box-shadow: 0 8px 28px rgba(79,106,173,0.22);
+    transform: translateY(-3px);
+}
+
+.ep-thumb {
+    width: 100%;
+    aspect-ratio: 16/9;
+    object-fit: cover;
+    display: block;
+    background: linear-gradient(135deg, #131826 0%, #0d111e 100%);
+    position: relative;
+}
+
+.ep-thumb-wrap {
+    position: relative;
+    overflow: hidden;
+}
+
+.ep-thumb-wrap img {
+    width: 100%;
+    aspect-ratio: 16/9;
+    object-fit: cover;
+    display: block;
+    background: var(--ep-thumb);
+}
+
+.ep-num-badge {
+    position: absolute;
+    bottom: 8px;
+    left: 10px;
+    font-family: 'Cinzel', serif;
+    font-size: 11px;
+    color: var(--gold);
+    background: rgba(11,13,20,0.82);
+    padding: 3px 9px;
+    letter-spacing: 1.5px;
+}
+
+.ep-play {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity .22s;
+    background: rgba(11,13,20,0.4);
+}
+
+.ep-card:hover .ep-play { opacity: 1; }
+
+.ep-play svg {
+    width: 40px;
+    height: 40px;
+    fill: rgba(255,255,255,0.9);
+    filter: drop-shadow(0 2px 8px rgba(0,0,0,0.6));
+}
+
+.ep-body {
+    padding: 14px 16px 16px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.ep-title {
+    font-family: 'Cinzel', serif;
+    font-size: 13.5px;
+    font-weight: 600;
+    color: #fff;
+    margin-bottom: 4px;
+    line-height: 1.35;
+}
+
+.ep-jp {
+    font-family: 'Crimson Pro', serif;
+    font-size: 12px;
+    color: var(--text-dim);
+    font-style: italic;
+    margin-bottom: 8px;
+}
+
+.ep-desc {
+    font-family: 'Crimson Pro', serif;
+    font-size: 13.5px;
+    color: var(--text-muted);
+    line-height: 1.5;
+    flex: 1;
+}
+
+.ep-date {
+    font-family: 'Crimson Pro', serif;
+    font-size: 12px;
+    color: var(--text-dim);
+    margin-top: 10px;
+}
+
+#DownloadButton{
+    background-color: #3f6abd;
+    margin-top: 20px;
+    padding: 10px;
+    font-size: 1.2rem;
+    color: #eee;
+    border-radius: 7px;
+    border-style: groove;
+    transition: background-color 0.2s;
+}
+
+#DownloadButton:hover{
+    background-color: #131846;
+    cursor: pointer;
+}
+/* ── FOOTER ── */
+footer {
+    background: var(--bg-mid);
+    border-top: 1px solid var(--border);
+    padding: 50px 60px;
+    text-align: center;
+}
+
+.footer-logo {
+    font-family: 'Cinzel', serif;
+    font-size: 22px;
+    font-weight: 800;
+    color: var(--accent);
+    letter-spacing: 3px;
+    margin-bottom: 14px;
+}
+
+footer p {
+    font-family: 'Crimson Pro', serif;
+    font-size: 14px;
+    color: var(--text-dim);
+    line-height: 1.7;
+}
+
+footer a { color: var(--accent); text-decoration: none; }
+footer a:hover { text-decoration: underline; }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 800px) {
+    .synopsis-grid { grid-template-columns: 1fr; }
+    .synopsis-poster { max-width: 320px; }
+    .hero-content { padding: 0 28px 50px; }
+    nav { padding: 0 20px; overflow-x: auto; }
+    .page-wrap { padding: 0 20px; }
+    footer { padding: 40px 24px; }
+}
